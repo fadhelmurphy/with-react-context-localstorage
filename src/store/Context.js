@@ -7,7 +7,7 @@ import React, {
   useCallback,
 } from "react";
 import {combineReducer} from "./CombinedReducers";
-import { collectionReducer } from "./Reducers";
+import collectionReducer from "./reducers/collectionReducer";
 
 export const RootContext = createContext({});
 
