@@ -1,4 +1,4 @@
-export const combineReducer = reducers => {
+const combineReducer = reducers => {
     const globalState = {};
   
     // set default state returned by reducer and its reducer
@@ -49,3 +49,5 @@ export const combineReducer = reducers => {
     // return the initial state and the global reducer
     return [globalState, reducerFunction];
   };
+
+  export default combineReducer

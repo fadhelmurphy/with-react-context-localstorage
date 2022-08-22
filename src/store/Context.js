@@ -6,7 +6,8 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
-import {combineReducer} from "./CombinedReducers";
+import collectionAction from "./actions/collectionAction";
+import combineReducer from "./CombinedReducers";
 import collectionReducer from "./reducers/collectionReducer";
 
 export const RootContext = createContext({});
@@ -28,30 +29,13 @@ const Context = ({ children }) => {
     return Local ? ParseLocal : initialState;
   });
 
-  // CRUD COLLECTION
-  const _getAll = async () => {};
-  const _getOne = async () => {};
-  const deleteAll = async () => {};
-  const deleteOne = async () => {};
-  const updateAll = async () => {};
-  const updateOne = async () => {};
-  const createAll = async () => {};
-  const createOne = async () => {};
-
   // pass in the returned value of useReducer
   const contextValue = useMemo(
     () => ({
       state,
       dispatch,
       // action collection
-      _getAll,
-      _getOne,
-      deleteAll,
-      deleteOne,
-      updateAll,
-      updateOne,
-      createAll,
-      createOne
+      ...collectionAction,
     }),
     [state, dispatch]
   );
