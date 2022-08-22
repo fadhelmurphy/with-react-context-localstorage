@@ -1,5 +1,5 @@
 import './App.css';
-import Router from "containers/router"
+import Router from "wrappers/router"
 
 export default function App() {
   return <Router />

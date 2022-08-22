@@ -1,3 +1,4 @@
+import ChildSection from "wrappers/child-section";
 import React, { useEffect } from "react";
 // import { withContext } from "store/Context";
 import { GetRootContext } from "store/Context";
@@ -13,6 +14,7 @@ const Home = () => {
   return (
     <>
       <h1>NGANU</h1>
+      <ChildSection title="Example Section" idElement="section" />
     </>
   );
 };
