@@ -17,6 +17,8 @@ export const STORAGE_KEY = "rootState";
 
 const selectedStateToPersist = ['collection'];
 
+export let RootAction = {}
+
 const Context = ({ children }) => {
   //#COMBINE STATE
   const reducers = useCallback(() => {
@@ -31,6 +33,12 @@ const Context = ({ children }) => {
     return Local ? {...initialState, ...ParseLocal} : initialState;
   });
 
+  RootAction = useMemo(()=>{
+    return {
+      ...rootAction(dispatch)
+    }
+  }, [dispatch])
+
   // pass in the returned value of useReducer
   const contextValue = useMemo(
     () => {
@@ -38,10 +46,10 @@ const Context = ({ children }) => {
         state,
         dispatch,
         // action collection
-        ...rootAction(dispatch),
+        // ...rootAction(dispatch),
       }
     },
-    [state, dispatch, rootAction]
+    [state, dispatch]
   );
 
   useEffect(() => {

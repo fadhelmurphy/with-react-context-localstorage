@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-sequences */
   // CRUD COLLECTION
-  const _getAll = (dispatch) => async (payload) => {};
-  const _getOne = (dispatch) => async (payload) => {
+  export const _getAll = (dispatch) => async (payload) => {};
+  export const _getOne = (dispatch) => async (payload) => {
     dispatch({
     type: 'GET_ALL_COLLECTION_SUCCESS',
     payload
