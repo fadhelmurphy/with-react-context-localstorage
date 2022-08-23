@@ -1,4 +1,7 @@
-import anotherCollectionReducer from "./anotherCollectionReducer";
-import collectionReducer from "./collectionReducer";
+import anotherCollectionReducer from './anotherCollectionReducer';
+import collectionReducer from './collectionReducer';
 
-export default { collection: collectionReducer, anotherCollection : anotherCollectionReducer };
+export default {
+  collection: collectionReducer,
+  anotherCollection: anotherCollectionReducer,
+};

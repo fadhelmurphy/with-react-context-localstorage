@@ -1,4 +1,4 @@
-import collectionAction from "./collectionAction"
+import collectionAction from './collectionAction';
 export default (dispatch) => ({
-    ...collectionAction(dispatch)
-})
+  ...collectionAction(dispatch),
+});
