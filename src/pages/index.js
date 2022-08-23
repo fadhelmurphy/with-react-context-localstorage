@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import ChildSection from "wrappers/child-section";
 import React, { useEffect } from "react";
 // import { withContext } from "store/Context";
@@ -7,10 +8,15 @@ const Home = () => {
     const context = GetRootContext()
     
     console.log(context, "INI CONTEXT")
-    useEffect(()=>{
+    useEffect(async ()=>{
 
-      context._getOne("JOSS")
-    })
+      await context._getOne("JOSS")
+
+      return () => {
+
+      }
+    }, [])
+    
   return (
     <>
       <h1>NGANU</h1>
