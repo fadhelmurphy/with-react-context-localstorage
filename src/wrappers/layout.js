@@ -69,10 +69,6 @@ export default function Layout({ title, children }) {
             url: "/",
             text: "Home",
           },
-          {
-            url: "/collection",
-            text: "My Collection",
-          },
         ]}
       />
       {children}

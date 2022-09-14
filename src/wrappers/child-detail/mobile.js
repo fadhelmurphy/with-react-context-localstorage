@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/css";
+import SectionItem from "components/sectionItem";
+import SectionItemList from "components/sectionItemList";
+
 const ChildDetailContainer = css`
 h1 {
   margin: 0;
@@ -49,34 +52,34 @@ export default function Mobile({ data, status }) {
     name,
   } = data;
   return (
-    <>
-      <div className={`container ${ChildDetailContainer}`}>
+    <div className={`container ${ChildDetailContainer}`}>
       {status === "loading" && "Loading..."}
-        {status === "success" && (<div className="col-12">
+      {status === "success" && (
+        <div className="col-12">
           <div className="content grid">
             <div className="description col-12">
               <span className="title">
                 <h1>{name}</h1>
               </span>
-              <span className="format">
-                <p>
-                base_experience : {base_experience}
-                </p>
+              <span className="base_experience">
+                <p>base_experience : {base_experience}</p>
               </span>
-              <span className="episodes">
-                <p>
-                stats : {JSON.stringify(stats)}
-                </p>
+              <span className="stats">
+                {stats.map((data) => (
+                  <SectionItem
+                    title={data.stat.name}
+                    data={data.base_stat}
+                    key={data.stat.name}
+                  />
+                ))}
               </span>
-              <span className="status">
-                <p>
-                types : {JSON.stringify(types)}
-                </p>
+              <span className="types">
+                <SectionItemList title="Type" propName="type" data={types} />
               </span>
             </div>
           </div>
-        </div>)}
-      </div>
-    </>
+        </div>
+      )}
+    </div>
   );
 }

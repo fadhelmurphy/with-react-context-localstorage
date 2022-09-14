@@ -32,8 +32,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Layout title="Detail">
-      <h1>Detail</h1>
+    <Layout title={context.state.collection.DetailCollection.name}>
       <ChildDetailPokemon isMobile={isMobile} status={context.state.collection.DetailCollection_status} data={context.state.collection.DetailCollection} />
     </Layout>
   );

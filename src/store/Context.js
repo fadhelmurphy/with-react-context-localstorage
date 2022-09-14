@@ -15,7 +15,7 @@ export const RootContext = createContext({});
 
 export const STORAGE_KEY = 'rootState';
 
-const selectedStateToPersist = ['collection'];
+const selectedStateToPersist = [];
 
 export let RootAction = {};
 

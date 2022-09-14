@@ -56,12 +56,12 @@ const Home = () => {
 
   return (
     <Layout title="Home">
-      <h1>NGANU</h1>
-      <input type="text" onChange={onSearch} placeholder="Search..." />
       <ChildListProducts
+        isMobile={isMobile}
         title="LIST"
         status={context.state.collection.AllCollection_status}
         data={filtered || context.state.collection.AllCollection?.results}
+        onSearch={onSearch}
       />
       {context.state.collection.AllCollection_status === "success" && (
           <div className="wrapper-pagination">
