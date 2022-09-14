@@ -1,4 +1,6 @@
-This website is Adaptive & Responsive (Mixed)
+This website is Adaptive & Responsive (Mixed).
+## Demo 
+This project is deployed to Vercel and can be accessed [Here](https://la-fe.vercel.app/). 
 ## Tech Stack
 
 * React JS
