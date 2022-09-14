@@ -1,11 +1,42 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-sequences */
 // CRUD COLLECTION
-export const _getAll = (dispatch) => async (payload) => {};
-export const _getOne = (dispatch) => async (payload) => {
+export const _getAll = (dispatch) => async (payload) => {
+  const {offset} = payload;
   dispatch({
-    type: 'GET_ALL_COLLECTION_SUCCESS',
-    payload,
+    type: 'GET_ALL_COLLECTION_LOADING',
+  });
+  
+  await fetch(`${process.env.REACT_APP_API}?offset=${offset}&limit=30`)
+  .then(async (res)=>{
+    const resJ = await res.json();
+    dispatch({
+      type: 'GET_ALL_COLLECTION_SUCCESS',
+      payload: resJ,
+    });
+  }).catch((error) => {
+    dispatch({
+      type: 'GET_ALL_COLLECTION_FAILED',
+    });
+  });
+};
+export const _getOne = (dispatch) => async (payload) => {
+  console.log(`${process.env.REACT_APP_API}/${payload.id}`)
+  dispatch({
+    type: 'GET_DETAIL_COLLECTION_LOADING',
+  });
+  
+  await fetch(`${process.env.REACT_APP_API}/${payload.id}`)
+  .then(async (res)=>{
+    const resJ = await res.json();
+    dispatch({
+      type: 'GET_DETAIL_COLLECTION_SUCCESS',
+      payload: resJ,
+    });
+  }).catch((error) => {
+    dispatch({
+      type: 'GET_DETAIL_COLLECTION_FAILED',
+    });
   });
 };
 export const deleteAll = (dispatch) => async (payload) => {};

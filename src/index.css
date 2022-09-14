@@ -11,3 +11,137 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.grid {
+  margin: 1em 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 2px;
+  counter-reset: div;
+  width: 100%;
+}
+
+.grid div[class]:after {
+  display: block;
+}
+
+
+/* spanning cols */
+
+.col-1 {
+  grid-column: auto/span 1;
+}
+
+.col-2 {
+  grid-column: auto/span 2;
+}
+
+.col-3 {
+  grid-column: auto/span 3;
+}
+
+.col-4 {
+  grid-column: auto/span 4;
+}
+
+.col-5 {
+  grid-column: auto/span 5;
+}
+
+.col-6 {
+  grid-column: auto/span 6;
+}
+
+.col-7 {
+  grid-column: auto/span 7;
+}
+
+.col-8 {
+  grid-column: auto/span 8;
+}
+
+.col-9 {
+  grid-column: auto/span 9;
+}
+
+.col-10 {
+  grid-column: auto/span 10;
+}
+
+.col-11 {
+  grid-column: auto/span 11;
+}
+
+.col-12 {
+  grid-column: auto/span 12;
+}
+
+
+.paging .paging-prev-text-active,
+.paging .paging-prev-text-inactive,
+.paging .paging-button,
+.paging .paging-button-active {
+  font-family: system-ui, sans-serif;
+}
+
+.paging .paging-prev-text-inactive,
+.paging .paging-prev-text-active {
+  padding: 0 18px;
+  border: 1px solid #E0E0E0;
+  height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.paging .paging-prev-text-active:nth-child(1) {
+  border-right: none;
+}
+
+.paging .paging-prev-text-active:nth-last-child(1) {
+  border-left: none;
+}
+
+.paging .paging-list-number {
+  padding: 0;
+}
+
+.paging .paging-list-number > a:nth-child(1) .paging-button {
+  border-left: 1px solid #E0E0E0;
+}
+
+.paging .paging-list-number > a:nth-last-child(1) .paging-button {
+  border-right: 1px solid #E0E0E0;
+}
+
+.paging .paging-list-number > a:nth-child(1) .paging-button:hover,
+.paging .paging-list-number > a:nth-last-child(1) .paging-button:hover {
+  border-color: #000;
+}
+
+.paging .paging-button,
+.paging .paging-button-dots,
+.paging .paging-button-active {
+  margin: 0;
+  border-radius: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+body .paging-button-active {
+  border-top: 1px solid #1A1E23;
+  border-bottom: 1px solid #1A1E23;
+  background: #1A1E23;
+  color: #fff;
+}
+
+.paging .paging-totop,
+.paging-list-item .button-to-top {
+  display: none;
+}

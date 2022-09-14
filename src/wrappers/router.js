@@ -22,6 +22,9 @@ export default function index() {
       url: '/',
       exact: true,
     },
+    {
+      url: "/pokemon/:id",
+    },
   ];
   return (
     <>
