@@ -24,7 +24,6 @@ const Home = () => {
   );
   const context = GetRootContext();
 
-  console.log(context, "INI context");
   useEffect(() => {
       RootAction._getOne({
         id: router.id,

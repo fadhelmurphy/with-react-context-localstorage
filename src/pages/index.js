@@ -32,7 +32,6 @@ const Home = () => {
   };
   const context = GetRootContext();
 
-  console.log(context, "INI context");
   const onSearch = (e) => {
     const { value } = e.target;
     var filterRes = filterData(value);
