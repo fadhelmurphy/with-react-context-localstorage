@@ -1,4 +1,4 @@
-This website is Adaptive & Responsive (Mixed).
+This boilerplate use Adaptive & Responsive (mix).
 ## Demo 
 This project is deployed to Vercel and can be accessed [Here](https://la-fe.vercel.app/). 
 ## Tech Stack
@@ -9,3 +9,11 @@ This project is deployed to Vercel and can be accessed [Here](https://la-fe.verc
 * Fetch API
 * Emotion
 * React-Helmet
+
+```shell
+with npx
+npx create-react-app --template https://github.com/fadhelmurphy/my-react-context-localstorage-boilerplate.git my-app
+
+with Yarn
+yarn create react-app --template https://github.com/fadhelmurphy/my-react-context-localstorage-boilerplate.git my-app
+```

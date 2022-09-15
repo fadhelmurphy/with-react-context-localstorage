@@ -1,17 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import ChildSection from "wrappers/child-section";
+// import ChildSection from "wrappers/child-section";
+import { useQuery } from "helpers/utils";
 import React, { useEffect, useState } from "react";
 // import { withContext } from "store/Context";
 import { GetRootContext, RootAction } from "store/Context";
-import ChildListProducts from "wrappers/child-list-products";
-import {  useLocation } from "react-router-dom";
+// import ChildListProducts from "wrappers/child-list-products";
+const ChildListProducts = React.lazy(() => import("wrappers/child-list-products"));
 const Layout = React.lazy(() => import("wrappers/layout"));
-
-function useQuery() {
-  const { search } = useLocation();
-
-  return React.useMemo(() => new URLSearchParams(search), [search]);
-}
 
 const Home = () => {
   const query = useQuery()

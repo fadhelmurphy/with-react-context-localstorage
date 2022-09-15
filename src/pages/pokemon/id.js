@@ -1,11 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import ChildSection from "wrappers/child-section";
 import React, { useEffect, useState } from "react";
 // import { withContext } from "store/Context";
 import { GetRootContext, RootAction } from "store/Context";
-import ChildListProducts from "wrappers/child-list-products";
 import {  useLocation, useParams } from "react-router-dom";
-import ChildDetailPokemon from "wrappers/child-detail";
+// import ChildDetailPokemon from "wrappers/child-detail";
+const ChildDetailPokemon = React.lazy(() => import("wrappers/child-detail"));
 const Layout = React.lazy(() => import("wrappers/layout"));
 
 function useQuery() {
