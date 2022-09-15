@@ -12,8 +12,8 @@ This project is deployed to Vercel and can be accessed [Here](https://la-fe.verc
 
 ```shell
 with npx
-npx create-react-app --template https://github.com/fadhelmurphy/my-react-context-localstorage-boilerplate.git my-app
+npx create-react-app --template https://github.com/fadhelmurphy/with-react-context-localstorage.git my-app
 
 with Yarn
-yarn create react-app --template https://github.com/fadhelmurphy/my-react-context-localstorage-boilerplate.git my-app
+yarn create react-app --template https://github.com/fadhelmurphy/with-react-context-localstorage.git my-app
 ```
