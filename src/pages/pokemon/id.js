@@ -16,7 +16,7 @@ const Home = () => {
       /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
     )
   );
-  const state = fetchWithStore(_getOne, {
+  const [state] = fetchWithStore(_getOne, {
     id: router.id,
   }, (state) => state.collection)
 

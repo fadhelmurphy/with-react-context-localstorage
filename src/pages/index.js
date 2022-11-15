@@ -5,14 +5,16 @@ import { fetchWithStore } from "hooks/useFetchStore";
 import React, { useState } from "react";
 import { _getAll } from "store/actions/collectionAction";
 // import { withContext } from "store/Context";
-import { GetRootContext } from "store/Context";
+// import { GetRootContext } from "store/Context";
 // import ChildListProducts from "wrappers/child-list-products";
-const ChildListProducts = React.lazy(() => import("wrappers/child-list-products"));
+const ChildListProducts = React.lazy(() =>
+  import("wrappers/child-list-products")
+);
 const Layout = React.lazy(() => import("wrappers/layout"));
 
 const Home = () => {
-  const query = useQuery()
-  const {dispatch} = GetRootContext();
+  const query = useQuery();
+  // const {dispatch} = GetRootContext();
   const pageQuery = query?.get("page");
   const [page, setPage] = useState(pageQuery || 1);
   const [offset, setOffset] = useState(0);
@@ -21,9 +23,9 @@ const Home = () => {
       /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
     )
   );
-  const state = fetchWithStore(_getAll, {
-    offset: offset,
-  }, (state) => state.collection, offset)
+  const [state] = fetchWithStore(_getAll,{offset: offset,},
+    (state) => state.collection, offset
+  );
 
   const [filtered, setFiltered] = useState(null);
   const filterData = (value) => {
@@ -41,10 +43,10 @@ const Home = () => {
   };
   const HandleLoadMore = async (e) => {
     setPage(e);
-    setOffset(e > page ? offset + 30 : offset - 30)
-    dispatch({
-      type: 'GET_ALL_COLLECTION_INIT',
-    });
+    setOffset(e > page ? offset + 30 : offset - 30);
+    // dispatch({
+    //   type: 'GET_ALL_COLLECTION_INIT',
+    // });
   };
 
   return (
@@ -57,19 +59,16 @@ const Home = () => {
         onSearch={onSearch}
       />
       {state.AllCollection_status === "success" && (
-          <div className="wrapper-pagination">
+        <div className="wrapper-pagination">
           <button
             onClick={(e) => HandleLoadMore(page - 1)}
-            disabled={page===1}
-            >
-              Prev
-              </button>
-            <button
-              onClick={(e) => HandleLoadMore(page + 1)}>
-                Next
-                </button>
-          </div>
-        )}
+            disabled={page === 1}
+          >
+            Prev
+          </button>
+          <button onClick={(e) => HandleLoadMore(page + 1)}>Next</button>
+        </div>
+      )}
     </Layout>
   );
 };
