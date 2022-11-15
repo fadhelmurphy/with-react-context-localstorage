@@ -8,7 +8,6 @@ import React, {
 } from 'react';
 import combineReducer from './CombinedReducers';
 import rootReducer from './reducers';
-import rootAction from './actions';
 import { stateToPersist } from 'helpers/utils';
 
 export const RootContext = createContext({});
@@ -16,8 +15,6 @@ export const RootContext = createContext({});
 export const STORAGE_KEY = 'rootState';
 
 const selectedStateToPersist = [];
-
-export let RootAction = {};
 
 const Context = ({ children }) => {
   //#COMBINE STATE
@@ -38,12 +35,6 @@ const Context = ({ children }) => {
         : initialState;
     },
   );
-
-  RootAction = useMemo(() => {
-    return {
-      ...rootAction(dispatch),
-    };
-  }, [dispatch]);
 
   // pass in the returned value of useReducer
   const contextValue = useMemo(() => {

@@ -21,7 +21,7 @@ export const _getAll = (dispatch) => async (payload) => {
   });
 };
 export const _getOne = (dispatch) => async (payload) => {
-  console.log(`${process.env.REACT_APP_API}/${payload.id}`)
+  // console.log(`${process.env.REACT_APP_API}/${payload.id}`)
   dispatch({
     type: 'GET_DETAIL_COLLECTION_LOADING',
   });

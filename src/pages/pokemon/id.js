@@ -1,17 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React from "react";
 // import { withContext } from "store/Context";
-import { GetRootContext, RootAction } from "store/Context";
-import {  useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { fetchWithStore } from "hooks/useFetchStore";
+import { _getOne } from "store/actions/collectionAction";
 // import ChildDetailPokemon from "wrappers/child-detail";
 const ChildDetailPokemon = React.lazy(() => import("wrappers/child-detail"));
 const Layout = React.lazy(() => import("wrappers/layout"));
-
-function useQuery() {
-  const { search } = useLocation();
-
-  return React.useMemo(() => new URLSearchParams(search), [search]);
-}
 
 const Home = () => {
   
@@ -21,17 +16,13 @@ const Home = () => {
       /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
     )
   );
-  const context = GetRootContext();
-
-  useEffect(() => {
-      RootAction._getOne({
-        id: router.id,
-      });
-  }, []);
+  const state = fetchWithStore(_getOne, {
+    id: router.id,
+  }, (state) => state.collection)
 
   return (
-    <Layout title={context.state.collection.DetailCollection.name}>
-      <ChildDetailPokemon isMobile={isMobile} status={context.state.collection.DetailCollection_status} data={context.state.collection.DetailCollection} />
+    <Layout title={state.DetailCollection?.name}>
+      <ChildDetailPokemon isMobile={isMobile} status={state.DetailCollection_status} data={state.DetailCollection} />
     </Layout>
   );
 };

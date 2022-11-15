@@ -1,15 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // import ChildSection from "wrappers/child-section";
 import { useQuery } from "helpers/utils";
-import React, { useEffect, useState } from "react";
+import { fetchWithStore } from "hooks/useFetchStore";
+import React, { useState } from "react";
+import { _getAll } from "store/actions/collectionAction";
 // import { withContext } from "store/Context";
-import { GetRootContext, RootAction } from "store/Context";
+import { GetRootContext } from "store/Context";
 // import ChildListProducts from "wrappers/child-list-products";
 const ChildListProducts = React.lazy(() => import("wrappers/child-list-products"));
 const Layout = React.lazy(() => import("wrappers/layout"));
 
 const Home = () => {
   const query = useQuery()
+  const {dispatch} = GetRootContext();
   const pageQuery = query?.get("page");
   const [page, setPage] = useState(pageQuery || 1);
   const [offset, setOffset] = useState(0);
@@ -18,14 +21,17 @@ const Home = () => {
       /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
     )
   );
+  const state = fetchWithStore(_getAll, {
+    offset: offset,
+  }, (state) => state.collection, offset)
+
   const [filtered, setFiltered] = useState(null);
   const filterData = (value) => {
-    const { results } = context.state.collection.AllCollection;
+    const { results } = state.AllCollection;
     return results.filter(
       (pokemon) => pokemon.name.toLowerCase().search(value.toLowerCase()) != -1
     );
   };
-  const context = GetRootContext();
 
   const onSearch = (e) => {
     const { value } = e.target;
@@ -34,30 +40,23 @@ const Home = () => {
     setFiltered(filterRes);
   };
   const HandleLoadMore = async (e) => {
-    const {dispatch} = context;
     setPage(e);
     setOffset(e > page ? offset + 30 : offset - 30)
     dispatch({
       type: 'GET_ALL_COLLECTION_INIT',
     });
   };
-  useEffect(() => {
-    context.state.collection.AllCollection_status === "init" &&
-      RootAction._getAll({
-        offset: offset,
-      });
-  }, [offset]);
 
   return (
     <Layout title="Home">
       <ChildListProducts
         isMobile={isMobile}
         title="LIST"
-        status={context.state.collection.AllCollection_status}
-        data={filtered || context.state.collection.AllCollection?.results}
+        status={state.AllCollection_status}
+        data={filtered || state.AllCollection?.results}
         onSearch={onSearch}
       />
-      {context.state.collection.AllCollection_status === "success" && (
+      {state.AllCollection_status === "success" && (
           <div className="wrapper-pagination">
           <button
             onClick={(e) => HandleLoadMore(page - 1)}
